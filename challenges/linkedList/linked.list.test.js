@@ -19,14 +19,20 @@ describe('LinkedList Class', () => {
     it('should have an insert method that adds a new node after the head', () => {
         const linkedList = new LinkedList();
         linkedList.insert(4);
-        expect(linkedList.head.next).toEqual(new Node(4));
+        expect(linkedList.head.next).toEqual(new Node(0));
     });
     it('should check if it includes a value', () => {
         const linkedList = new LinkedList();
         linkedList.insert(4);
         linkedList.insert(5);
-        console.log(linkedList)
-        console.log(linkedList.includes(0));
-        expect(linkedList.includes(4)).toEqual('true')
+        linkedList.insert(0);
+        expect(linkedList.includes(0)).toEqual('true')
+    });
+    it('should be able to be converted into a string', () => {
+        const linkedList = new LinkedList();
+        linkedList.insert(4);
+        linkedList.insert(5);
+        linkedList.insert(0);
+        expect(linkedList.toString()).toEqual('0 -> 5 -> 4 -> null ')
     });
 })

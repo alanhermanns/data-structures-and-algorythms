@@ -14,34 +14,36 @@ class LinkedList {
     }
 
     insert(value){
-            this.head.next = new Node(value);
+            let head = this.head;
+            this.head = new Node(value);
+            this.head.next = head;
             this.size++
         }
     includes(value) {
         
-        const proceed = (node) => {
-            console.log(node.value);
-            if(node.value === value){ return true }
-            proceed(node.next);
+        const proceed = (node, value) => {
+            if(!node.next){ return 'false'}
+            else if(node.value === value){ 
+                return 'true' }
+            proceed(node.next, value);
         }
             
-        if(this.size > 0){
-            let result = proceed(this.head)
-            console.log(result);
+            const result = proceed(this.head, value);
             return result;
-            } else {
-                result = 'LinkedList of Zero Length';
-                return result;
             }
-        }
+
     toString() {
         let array = [];
-        let node = head;
+        let node = this.head;
             while(node.next){
-            array.push(JSON.stringify(node.value));
+            array.push(`${node.value} ->`)
             node = node.next
         }
-        return JSON.stringify(array);
+        array.push('null');
+        let string = array.reduce((acc, curr ) => {
+            return acc += `${curr} `
+        }, '');
+        return string;
     }
 }
 
