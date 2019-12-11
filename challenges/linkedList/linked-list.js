@@ -10,7 +10,7 @@ class Node {
 class LinkedList {
     constructor(head){
         this.head = new Node(0),
-        this.size = 0
+        this.size = 1
     }
 
     insert(value){
@@ -32,6 +32,15 @@ class LinkedList {
             return result;
             }
 
+        append(value) {
+            let currentNode = this.head;
+            while(currentNode.next !== null){
+                currentNode = currentNode.next;
+            };
+            currentNode.next = new Node(value);
+            console.log(currentNode)
+            this.size++;
+        }
     toString() {
         let array = [];
         let node = this.head;

@@ -35,4 +35,14 @@ describe('LinkedList Class', () => {
         linkedList.insert(0);
         expect(linkedList.toString()).toEqual('0 -> 5 -> 4 -> null ')
     });
+    it('should be able to add a node to the end', () => {
+        const linkedList = new LinkedList();
+        linkedList.append(4);
+        linkedList.insert(3);
+        linkedList.append(1);
+        linkedList.insert('hi');
+        expect(linkedList.size).toEqual(5); 
+        });
+    
+
 })
