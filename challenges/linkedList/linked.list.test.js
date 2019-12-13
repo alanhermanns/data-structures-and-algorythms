@@ -35,14 +35,29 @@ describe('LinkedList Class', () => {
         linkedList.insert(0);
         expect(linkedList.toString()).toEqual('0 -> 5 -> 4 -> null ')
     });
-    it('should be able to add a node to the end', () => {
+    // it('should be able to add a node to the end', () => {
+    //     const linkedList = new LinkedList();
+    //     linkedList.append(4);
+    //     linkedList.insert(2);
+    //     linkedList.append(1);
+    //     expect(linkedList.toString()).toEqual('kglhg'); 
+    //     });
+    it('should be able to insert a node before another', () => {
         const linkedList = new LinkedList();
-        linkedList.append(4);
         linkedList.insert(3);
-        linkedList.append(1);
         linkedList.insert('hi');
-        expect(linkedList.size).toEqual(5); 
+        linkedList.insert(1);
+        linkedList.insertBefore('hi', 2);
+        expect(linkedList.toString()).toEqual()
         });
-    
+     it('should be able to add a node after another', () => {
+        const linkedList = new LinkedList();
+        linkedList.insert(3);
+        linkedList.insert(4);
+        console.log(linkedList.toString())
+        linkedList.insertAfter(3, 'yo');
+        linkedList.insertAfter('yo', 8);
+        expect(linkedList.toString()).toEqual('4 -> 3 -> yo -> 8 -> null ')
+        });
 
 })

@@ -31,20 +31,50 @@ class LinkedList {
             const result = proceed(this.head, value);
             return result;
             }
-
-        append(value) {
-            let currentNode = this.head;
-            while(currentNode.next !== null){
-                currentNode = currentNode.next;
-            };
-            currentNode.next = new Node(value);
-            console.log(currentNode)
+append(value) {
+    const goatillend = (node, value) => {
+        if(!node.next){
             this.size++;
+            let newnode = new Node(value);
+            node.next = newnode;
+            return
         }
+        goatillend(node.next, value);
+    }
+        goatillend(this.head, value);
+}
+    insertBefore(value, newValue){
+        const go = (node, value, newValue) => {
+            if(!node.next){ return 'false'}
+            else if(node.next.value === value){
+                this.size++;
+                let newNode = new Node(newValue);
+                node = newNode;
+                newNode.next = node.next;
+                return true;
+            }
+            go(node.next, value, newValue);
+        }
+            go(this.head, value, newValue);
+    }
+    insertAfter(value, newValue){
+        const goafter = (node, value, newValue) => {
+            if(!node.next){ return false}
+            else if(node.value === value){
+                this.size++;
+                let nextnode = node.next;
+                let newnode = new Node(newValue)
+                node.next = newnode;
+                newnode.next = nextnode;
+            }
+            goafter(node.next, value, newValue);
+        }
+            goafter(this.head, value, newValue);
+    }
     toString() {
         let array = [];
         let node = this.head;
-            while(node.next){
+            while(node.next !== null){
             array.push(`${node.value} ->`)
             node = node.next
         }
